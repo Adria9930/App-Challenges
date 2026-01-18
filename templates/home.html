@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - App de Retos</title>
+  <link rel="stylesheet" href="/static/stylle.css">
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Panel lateral izquierdo */
+    .home-container {
+        width: 250px;
+        height: 100vh;
+        background-color: #1c1c1c;
+        padding: 20px;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; /* scroll vertical */
+    }
+
+    .home-container h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .home-button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 6px 0;
+        background-color: #000;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        text-decoration: none;
+    }
+
+    .home-button:hover {
+        background-color: #333;
+        transform: translateX(5px);
+    }
+
+    /* Logo / Eslogan centrado en el espacio restante */
+    .logo-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .logo-text {
+        font-size: 36px;
+        font-weight: bold;
+        color: #ffd700;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    footer {
+        text-align: center;
+        padding: 12px;
+        background-color: #111;
+        color: #fff;
+        width: 100%;
+        font-size: 14px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Panel lateral izquierdo -->
+  <div class="home-container">
+    <h1>Bienvenido a los Retos</h1>
+    <a href="/retos/matematicas/siguiente" class="home-button">🧮 Matemáticas</a>
+    <a href="/retos/historia/siguiente" class="home-button">📜 Historia</a>
+    <a href="/retos/ciencia/siguiente" class="home-button">🔬 Ciencia</a>
+    <a href="/retos/geografia/siguiente" class="home-button">🌍 Geografía</a>
+    <a href="/retos/lengua/siguiente" class="home-button">✏️ Lengua</a>
+    <a href="/ranking" class="home-button">🏆 Ranking</a>
+    <a href="/profile" class="home-button">👤 Perfil</a>
+    <a href="/logout" class="home-button">🚪 Cerrar sesión</a>
+  </div>
+
+  <!-- Logo / Eslogan centrado -->
+  <div class="logo-container">
+    <div class="logo-text">¡Pon a prueba tus habilidades!</div>
+  </div>
+
+  <footer>
+    <p>Creado por Adria Ortiz</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil de Usuario</title>
+  <link rel="stylesheet" href="/static/stylle.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido, {{ user['nombre'] }}!</h1>
+    <div class="form-card profile-card">
+      <h2>Información de tu cuenta</h2>
+      <ul>
+        <li><strong>Nombre:</strong> {{ user['nombre'] }}</li>
+        <li><strong>Email:</strong> {{ user['email'] }}</li>
+        <li><strong>Curso:</strong> {{ user['curso'] }}</li>
+        <li><strong>Puntos:</strong> {{ user['puntos'] }}</li>
+        <li><strong>Medallas:</strong> {{ user['medallas'] or 'Ninguna' }}</li>
+        <li><strong>Premium:</strong> {{ 'Sí' if user['premium'] else 'No' }}</li>
+        <li><strong>Fecha de registro:</strong> {{ user['fecha_creacion'] }}</li>
+      </ul>
+      <!-- Enlace actualizado para volver al Home -->
+      <a class="btn logout-btn" href="/home">⬅ Volver al menú</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Creado por Adria Ortiz</p>
+  </footer>
+</body>
+</html>

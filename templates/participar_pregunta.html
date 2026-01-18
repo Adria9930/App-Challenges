@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reto - Pregunta</title>
+<link rel="stylesheet" href="/static/stylle.css">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    user-select: none;
+  }
+
+  .pregunta-card {
+    background-color: #1c1c1c;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+  }
+
+  .pregunta-card h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .pregunta-card input {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #2b2b2b;
+    color: #fff;
+  }
+
+  .pregunta-card button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    transition: background 0.3s;
+  }
+
+  .pregunta-card button:hover {
+    background-color: #333;
+  }
+
+  .temporizador {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #ffd700;
+  }
+</style>
+</head>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onpaste="return false;">
+
+<div class="pregunta-card">
+  <h2>{{ pregunta['pregunta'] }}</h2>
+  <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
+  <br>
+  <button id="enviar">Enviar</button>
+  <div class="temporizador" id="timer">Tiempo: 15s</div>
+</div>
+
+<!-- ESLint ignorará este bloque -->
+<!-- eslint-disable -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const pregunta = {{ pregunta | tojson }};
+    const preguntaId = pregunta.id;
+    const tema = pregunta.tema;
+
+    let tiempo = 15;
+    const timerEl = document.getElementById("timer");
+    const input = document.getElementById("respuesta");
+    const boton = document.getElementById("enviar");
+
+    const countdown = setInterval(() => {
+        tiempo--;
+        timerEl.textContent = `Tiempo: ${tiempo}s`;
+        if (tiempo <= 0) {
+            clearInterval(countdown);
+            enviarRespuesta();
+        }
+    }, 1000);
+
+    function enviarRespuesta() {
+        const respuesta = input.value.trim();
+
+        fetch(`/retos/${preguntaId}/participar`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ respuesta })
+        })
+        .then(res => res.json())
+        .then(() => {
+            window.location.href = `/retos/${tema}/siguiente`;
+        });
+    }
+
+    boton.addEventListener("click", enviarRespuesta);
+});
+</script>
+
+<!-- eslint-enable -->
+
+</body>
+</html>

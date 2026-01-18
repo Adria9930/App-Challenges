@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ reto['titulo'] }}</title>
+  <link rel="stylesheet" href="/static/stylle.css">
+</head>
+<body>
+  <div class="container">
+    <h1>{{ reto['titulo'] }}</h1>
+    <p>{{ reto['descripcion'] }}</p>
+
+    <div id="timer" style="color:#ffd700;font-size:18px;"></div>
+
+    <form class="form-card" method="POST">
+      <input type="text" name="respuesta" placeholder="Escribe HECHO al terminar" required>
+      <button type="submit">Confirmar</button>
+    </form>
+
+    <a class="btn" href="/home">⬅ Volver</a>
+  </div>
+
+  <script>
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('paste', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey || e.key === "Tab" || e.key === "F12") {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        alert("Has salido del reto. Reto perdido.");
+        window.location.href = "/home";
+      }
+    });
+
+    let tiempo = 30;
+    const timerEl = document.getElementById("timer");
+    setInterval(() => {
+      timerEl.innerText = "Tiempo restante: " + tiempo + "s";
+      if (--tiempo < 0) {
+        alert("Tiempo agotado");
+        window.location.href = "/home";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

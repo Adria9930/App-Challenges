@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ranking - Top 10</title>
+  <link rel="stylesheet" href="/static/stylle.css">
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #ffd700;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .ranking-list {
+      width: 100%;
+      max-width: 600px;
+      background-color: #1c1c1c;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      padding: 20px;
+      list-style: none;
+      margin: 0;
+    }
+
+    .ranking-list li {
+      padding: 15px;
+      font-size: 20px;
+      border-bottom: 1px solid #333;
+      display: flex;
+      align-items: center;
+    }
+
+    .ranking-list li:last-child {
+      border-bottom: none;
+    }
+
+    .medalla {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #000;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Top 10 Usuarios</h1>
+  <ol class="ranking-list">
+    {% for user in top10 %}
+      <li>
+        {% if loop.index == 1 %}
+          <span class="medalla">🥇</span>
+        {% elif loop.index == 2 %}
+          <span class="medalla">🥈</span>
+        {% elif loop.index == 3 %}
+          <span class="medalla">🥉</span>
+        {% else %}
+          <span class="medalla">{{ loop.index }}.</span>
+        {% endif %}
+        {{ user['nombre'] }} - {{ user['puntos'] }} puntos
+      </li>
+    {% endfor %}
+  </ol>
+
+  <div class="btn-container">
+    <a class="btn" href="/home">⬅ Volver al Home</a>
+  </div>
+</body>
+</html>
+

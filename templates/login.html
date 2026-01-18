@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="/static/stylle.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Iniciar Sesión</h1>
+    <form id="loginForm" class="form-card">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p>¿No tienes cuenta? 
+      <a class="btn register-btn" href="/register-page">Regístrate</a>
+    </p>
+  </div>
+
+  <footer>
+    <p>Creado por Adria Ortiz</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        email: form.email.value,
+        password: form.password.value
+      };
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      alert(result.message || result.error);
+      if(result.message) {
+        // Redirige al Home
+        window.location.href = result.redirect || "/home";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121212; /* fondo negro */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    flex-direction: column;
+}
+
+/* Contenedor */
+.container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Títulos */
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Formulario */
+.form-card {
+    background-color: #1c1c1c; /* negro suave */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.form-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Inputs */
+.form-card input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #000; /* borde negro */
+    font-size: 16px;
+    background-color: #2b2b2b;
+    color: #fff;
+}
+
+/* Botones */
+.form-card button {
+    width: 95%;
+    padding: 12px;
+    background-color: #000; /* negro */
+    color: #fff; /* LETRA BLANCA */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.form-card button:hover {
+    background-color: #333; /* negro más claro al hover */
+}
+
+/* Enlaces dentro de formularios */
+.form-card a {
+    display: block;
+    margin-top: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.form-card a:hover {
+    text-decoration: underline;
+}
+
+/* Perfil */
+.profile-card {
+    background-color: #1c1c1c;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    text-align: left;
+    transition: transform 0.2s;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+.profile-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+}
+
+/* Botones externos */
+.btn, .logout-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000; /* negro */
+    color: #fff; /* LETRA BLANCA */
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn:hover, .logout-btn:hover {
+    background-color: #333;
+}
+
+/* Botón registro en login */
+.register-btn {
+    background-color: #000; /* negro */
+    color: #fff; /* LETRA BLANCA */
+}
+
+.register-btn:hover {
+    background-color: #333;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 12px;
+    background-color: #111; /* footer más oscuro */
+    color: #fff;
+    width: 100%;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+}

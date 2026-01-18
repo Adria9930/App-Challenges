@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <link rel="stylesheet" href="/static/stylle.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Registro de Usuario</h1>
+    <form id="registerForm" class="form-card">
+      <input type="text" name="nombre" placeholder="Nombre" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Contraseña" required>
+      <input type="text" name="curso" placeholder="Curso" required>
+      <button type="submit">Registrar</button>
+    </form>
+
+    <p>¿Ya tienes cuenta? 
+      <a class="btn register-btn" href="/login-page">Inicia sesión</a>
+    </p>
+  </div>
+
+  <footer>
+    <p>Creado por Adria Ortiz</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        nombre: form.nombre.value,
+        email: form.email.value,
+        password: form.password.value,
+        curso: form.curso.value
+      };
+      const res = await fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      alert(result.message || result.error);
+      if(result.message) window.location.href = "/login-page";
+    });
+  </script>
+</body>
+</html>
