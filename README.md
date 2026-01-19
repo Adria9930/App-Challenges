@@ -1,0 +1,1 @@
+An effective challenge games app, with different themes and the option for a personal user and a database with backend. The project is unfinished but functional; the aim was to help students or schools
